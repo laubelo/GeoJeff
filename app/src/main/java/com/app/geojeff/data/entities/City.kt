@@ -1,6 +1,7 @@
 package com.app.geojeff.data.entities
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class City(
     val name: String,
@@ -11,4 +12,4 @@ data class City(
     val population: Int,
     @SerializedName("bbox")
     val cardinalDirection: CardinalDirection
-)
+) : Serializable

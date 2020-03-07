@@ -16,7 +16,7 @@ class RemoteClient {
         val client = OkHttpClient.Builder().addInterceptor(interceptor).build()
 
         val retrofit = Retrofit.Builder()
-            .baseUrl(Constants.baseUrl)
+            .baseUrl(Constants.BASE_URL)
             .client(client)
             .addConverterFactory(GsonConverterFactory.create())
             .build()

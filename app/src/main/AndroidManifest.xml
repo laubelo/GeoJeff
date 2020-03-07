@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.cityDetail.CityDetailActivity"></activity>
+        <activity android:name=".ui.cityDetail.CityDetailActivity" />
         <activity android:name=".ui.searchHistory.SearchHistoryActivity" />
         <activity android:name=".ui.home.HomeActivity">
             <intent-filter>
@@ -21,6 +21,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="@string/GOOGLE_API_KEY" />
     </application>
 
 </manifest>

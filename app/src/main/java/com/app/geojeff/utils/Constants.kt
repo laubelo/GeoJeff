@@ -1,8 +1,7 @@
 package com.app.geojeff.utils
 
-class Constants {
-    companion object {
-        const val baseUrl: String = "http://api.geonames.org/"
-        const val username: String = "ilgeonamessample"
-    }
+object Constants {
+    const val BASE_URL: String = "http://api.geonames.org/"
+    const val USERNAME: String = "ilgeonamessample"
+    const val INTENT_EXTRA_CITY_DETAIL = "city"
 }

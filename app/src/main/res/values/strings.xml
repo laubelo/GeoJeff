@@ -5,4 +5,6 @@
     <string name="home_title">Geo Jeff</string>
     <string name="history_title">Search history</string>
     <string name="no_list_results">Oh, no! No matches found.\nTry again.</string>
+    <string name="city_detail_title">City details</string>
+    <string name="GOOGLE_API_KEY">AIzaSyDS5642AaKLYE-EZD5y93fzvhlQnTRCmdY</string>
 </resources>
