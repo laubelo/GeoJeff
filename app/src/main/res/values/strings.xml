@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Geo Jeff</string>
+    <string name="search_history">View your search history</string>
+    <string name="search_hint">Search a city</string>
+    <string name="home_title">Geo Jeff</string>
+    <string name="history_title">Search history</string>
+    <string name="no_list_results">Oh, no! No matches found.\nTry again.</string>
+</resources>
