@@ -1,4 +1,4 @@
-package com.app.geojeff.data.repository
+package com.app.geojeff.data.repository.remote
 
 import com.app.geojeff.data.entities.ResponseCity
 import com.app.geojeff.data.entities.ResponseWeather
@@ -16,10 +16,10 @@ interface ApiService {
 
     @GET("http://api.geonames.org/weatherJSON")
     suspend fun getCityWeather(
-        @Query("north") north: Double,
-        @Query("south") south: Double,
-        @Query("east") east: Double,
-        @Query("west") west: Double,
+        @Query("north") north: Double?,
+        @Query("south") south: Double?,
+        @Query("east") east: Double?,
+        @Query("west") west: Double?,
         @Query("username") username: String = Constants.USERNAME
     ): ResponseWeather
 

@@ -7,4 +7,6 @@
     <string name="no_list_results">Oh, no! No matches found.\nTry again.</string>
     <string name="city_detail_title">City details</string>
     <string name="GOOGLE_API_KEY">AIzaSyDS5642AaKLYE-EZD5y93fzvhlQnTRCmdY</string>
+    <string name="no_temperature_data">No temperature data for this city</string>
+    <string name="no_historic_results">No search data. Do a first search.</string>
 </resources>

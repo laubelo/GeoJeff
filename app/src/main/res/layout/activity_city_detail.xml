@@ -50,6 +50,29 @@
             app:layout_constraintTop_toBottomOf="@id/text_population">
 
         </fragment>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:orientation="vertical"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/map">
+
+            <TextView
+                android:id="@+id/text_no_temperature"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/no_temperature_data"
+                android:textColor="@color/colorGray"
+                android:visibility="gone"
+                tools:visibility="visible" />
+
+        </LinearLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>

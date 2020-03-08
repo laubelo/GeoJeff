@@ -85,8 +85,11 @@ class HomeActivity : BaseActivity(), CitiesAdapter.OnCityClick {
         })
     }
 
-    override fun onClick(city: City) {
-        navigator.goToDetail(this, city)
+    override fun onClick(city: City?) {
+        city?.let {
+            viewModel.addCityToSearchHistory(it)
+            navigator.goToDetail(this, it)
+        }
     }
 
 }

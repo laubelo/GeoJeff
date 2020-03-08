@@ -4,7 +4,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.app.geojeff.data.entities.Weather
 import com.app.geojeff.data.repository.ApiRepository
-import com.app.geojeff.data.repository.DataState
+import com.app.geojeff.data.repository.remote.DataState
 import com.app.geojeff.ui.common.BaseViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -15,10 +15,10 @@ class CityDetailViewModel(private val apiRepository: ApiRepository) : BaseViewMo
     val weather = MutableLiveData<List<Weather>>()
 
     fun getWeather(
-        north: Double,
-        south: Double,
-        east: Double,
-        west: Double
+        north: Double?,
+        south: Double?,
+        east: Double?,
+        west: Double?
     ) {
         launch {
             val result =

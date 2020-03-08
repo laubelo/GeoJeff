@@ -2,9 +2,10 @@ package com.app.geojeff.ui.home
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
+import com.app.geojeff.data.entities.City
 import com.app.geojeff.data.entities.ResponseCity
 import com.app.geojeff.data.repository.ApiRepository
-import com.app.geojeff.data.repository.DataState
+import com.app.geojeff.data.repository.remote.DataState
 import com.app.geojeff.ui.common.BaseViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -28,6 +29,13 @@ class HomeViewModel(private val apiRepository: ApiRepository) : BaseViewModel() 
                 is DataState.Success -> responseCity.value = result.data
                 is DataState.Error -> Log.e("error", result.exception.message)
             }
+        }
+    }
+
+    fun addCityToSearchHistory(city: City) {
+        //insert city to database
+        launch {
+            apiRepository.addCityToSearchHistory(city)
         }
     }
 

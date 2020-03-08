@@ -1,9 +1,9 @@
-package com.app.geojeff.data.repository
+package com.app.geojeff.data.repository.remote
 
 import com.app.geojeff.utils.Constants
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import retrofit2.*
+import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class RemoteClient {

@@ -1,4 +1,4 @@
-package com.app.geojeff.data.repository
+package com.app.geojeff.data.repository.remote
 
 sealed class DataState<out T : Any> {
     class Success<out T : Any>(val data: T) : DataState<T>()

@@ -38,7 +38,8 @@ class CitiesAdapter(
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bindItem(city: City) {
             itemView.apply {
-                text_city.text = city.name
+                val text = city.name + ", " + city.countryCode
+                text_city.text = text
                 text_city.setOnClickListener {
                     onCityClick.onClick(city)
                 }
@@ -47,7 +48,7 @@ class CitiesAdapter(
     }
 
     interface OnCityClick {
-        fun onClick(city: City)
+        fun onClick(city: City?)
     }
 
 }

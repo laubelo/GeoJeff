@@ -1,6 +1,7 @@
 package com.app.geojeff.ui.cityDetail
 
 import android.util.Log
+import android.view.View
 import androidx.lifecycle.Observer
 import com.app.geojeff.R
 import com.app.geojeff.data.entities.City
@@ -35,12 +36,19 @@ class CityDetailActivity : BaseActivity(), OnMapReadyCallback {
             setCityDetails()
             initGoogleMaps()
             val cardinalDirection = city.cardinalDirection
-            viewModel.getWeather(
-                cardinalDirection.north,
-                cardinalDirection.south,
-                cardinalDirection.east,
-                cardinalDirection.west
-            )
+            cardinalDirection?.let { weather ->
+                viewModel.getWeather(
+                    weather.north,
+                    weather.south,
+                    weather.east,
+                    weather.west
+                )
+            }
+
+            if (cardinalDirection == null) {
+                text_no_temperature.visibility = View.VISIBLE
+            }
+
             setObservers()
         }
     }
@@ -48,13 +56,18 @@ class CityDetailActivity : BaseActivity(), OnMapReadyCallback {
     private fun setObservers() {
         viewModel.weather.observe(this, Observer { weather ->
             var temperature = 0
-            weather.forEach { item ->
-                item.temperature?.let {
-                    temperature += it.toInt()
+            if (weather.isNotEmpty()) {
+                weather.forEach { item ->
+                    item.temperature?.let {
+                        temperature += it.toInt()
+                    }
                 }
+                val totalTemp = temperature / weather.size
+                Log.e("temperature", totalTemp.toString())
+            } else {
+                //TODO show no temperature results
+                text_no_temperature.visibility = View.VISIBLE
             }
-            val totalTemp = temperature / weather.size
-            Log.e("temperature", totalTemp.toString())
         })
     }
 
@@ -74,11 +87,15 @@ class CityDetailActivity : BaseActivity(), OnMapReadyCallback {
         googleMap = map
 
         googleMap?.let {
-            val latLng = LatLng(city.lat.toDouble(), city.lng.toDouble())
-            val zoomLevel = 12.0f
-            val markerOptions: MarkerOptions = MarkerOptions().position(latLng)
-            it.addMarker(markerOptions)
-            it.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoomLevel))
+            city.lat?.let { lat ->
+                city.lng?.let { lng ->
+                    val latLng = LatLng(lat.toDouble(), lng.toDouble())
+                    val zoomLevel = 12.0f
+                    val markerOptions: MarkerOptions = MarkerOptions().position(latLng)
+                    it.addMarker(markerOptions)
+                    it.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoomLevel))
+                }
+            }
         }
     }
 
