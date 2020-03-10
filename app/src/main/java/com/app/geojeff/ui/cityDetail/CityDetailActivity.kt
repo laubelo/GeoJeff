@@ -1,12 +1,13 @@
 package com.app.geojeff.ui.cityDetail
 
-import android.util.Log
 import android.view.View
+import android.widget.SeekBar
 import androidx.lifecycle.Observer
 import com.app.geojeff.R
 import com.app.geojeff.data.entities.City
 import com.app.geojeff.ui.common.BaseActivity
 import com.app.geojeff.utils.Constants
+import com.app.geojeff.utils.SeekBarAnimation
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -16,7 +17,8 @@ import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.android.synthetic.main.activity_city_detail.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
-class CityDetailActivity : BaseActivity(), OnMapReadyCallback {
+
+class CityDetailActivity : BaseActivity(), OnMapReadyCallback, SeekBar.OnSeekBarChangeListener {
 
     override val viewModel by viewModel<CityDetailViewModel>()
 
@@ -46,7 +48,7 @@ class CityDetailActivity : BaseActivity(), OnMapReadyCallback {
             }
 
             if (cardinalDirection == null) {
-                text_no_temperature.visibility = View.VISIBLE
+                hideTemperatureBar()
             }
 
             setObservers()
@@ -55,25 +57,37 @@ class CityDetailActivity : BaseActivity(), OnMapReadyCallback {
 
     private fun setObservers() {
         viewModel.weather.observe(this, Observer { weather ->
-            var temperature = 0
+            var temperature = 0f
             if (weather.isNotEmpty()) {
                 weather.forEach { item ->
                     item.temperature?.let {
-                        temperature += it.toInt()
+                        temperature += it.toFloat()
                     }
                 }
+
                 val totalTemp = temperature / weather.size
-                Log.e("temperature", totalTemp.toString())
+                setupSeekBarTemperature(totalTemp)
             } else {
-                //TODO show no temperature results
-                text_no_temperature.visibility = View.VISIBLE
+                hideTemperatureBar()
             }
         })
     }
 
+    private fun hideTemperatureBar() {
+        linear_temperature.visibility = View.GONE
+        text_no_temperature.visibility = View.VISIBLE
+    }
+
+    private fun setupSeekBarTemperature(totalTemp: Float) {
+        val progressBarAnimation = SeekBarAnimation(seek_temperature, 0f, totalTemp)
+        progressBarAnimation.duration = 900
+        seek_temperature.startAnimation(progressBarAnimation)
+        seek_temperature.setOnSeekBarChangeListener(this)
+    }
+
     private fun setCityDetails() {
         val title = city.name + ", " + city.countryName + " " + city.continentCode
-        val population = city.population.toString() + " population"
+        val population = city.population.toString() + " " + getString(R.string.population)
         text_name.text = title
         text_population.text = population
     }
@@ -97,6 +111,26 @@ class CityDetailActivity : BaseActivity(), OnMapReadyCallback {
                 }
             }
         }
+    }
+
+
+    //seekBar change listener methods
+    override fun onProgressChanged(seekBar: SeekBar?, progress: Int, p2: Boolean) {
+        seekBar?.let {
+            //amount 5px to maximum value for center the text in progress value
+            val value = (progress * (it.width - 2 * it.thumbOffset)) / (it.max + 5)
+            val temperature = progress.toString() + getString(R.string.celsius)
+            text_temperature.text = temperature
+            text_temperature.x = it.x + value + it.thumbOffset / 2
+        }
+    }
+
+    override fun onStartTrackingTouch(p0: SeekBar?) {
+        //Do nothing
+    }
+
+    override fun onStopTrackingTouch(p0: SeekBar?) {
+        //Do nothing
     }
 
 }

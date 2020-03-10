@@ -39,6 +39,66 @@
             app:layout_constraintTop_toBottomOf="@id/text_name"
             tools:text="1000000 people" />
 
+        <LinearLayout
+            android:id="@+id/linear_content_temperature"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_population">
+
+            <TextView
+                android:id="@+id/text_no_temperature"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:text="@string/no_temperature_data"
+                android:textColor="@color/colorGray"
+                android:visibility="gone"
+                tools:visibility="visible" />
+
+            <LinearLayout
+                android:id="@+id/linear_temperature"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:text="@string/city_temperature"
+                    android:textColor="@color/colorGray" />
+
+                <TextView
+                    android:id="@+id/text_temperature"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold"
+                    tools:text="25" />
+
+                <SeekBar
+                    android:id="@+id/seek_temperature"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:max="50"
+                    android:progressDrawable="@drawable/progress_temperature"
+                    android:thumb="@null"
+                    tools:progress="20" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
         <fragment
             android:id="@+id/map"
             android:name="com.google.android.gms.maps.SupportMapFragment"
@@ -47,31 +107,7 @@
             android:layout_marginTop="40dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/text_population">
-
-        </fragment>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:orientation="vertical"
-            android:paddingStart="20dp"
-            android:paddingEnd="20dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/map">
-
-            <TextView
-                android:id="@+id/text_no_temperature"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/no_temperature_data"
-                android:textColor="@color/colorGray"
-                android:visibility="gone"
-                tools:visibility="visible" />
-
-        </LinearLayout>
+            app:layout_constraintTop_toBottomOf="@id/linear_content_temperature" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

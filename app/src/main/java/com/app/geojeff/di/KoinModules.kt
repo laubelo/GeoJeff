@@ -15,6 +15,7 @@ import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 val appModule = module {
+    //singletons
     single { RemoteClient() }
     single<ApiRepository> { ApiRepositoryImpl(get(), get()) }
     single {
@@ -22,6 +23,7 @@ val appModule = module {
     }
     single { Navigator() }
 
+    //viewModels
     viewModel { HomeViewModel(get()) }
     viewModel { SearchHistoryViewModel(get()) }
     viewModel { CityDetailViewModel(get()) }

@@ -30,11 +30,15 @@ class SearchHistoryActivity : BaseActivity(), CitiesAdapter.OnCityClick {
                 if (it.isNotEmpty()) {
                     setAdapter(it)
                 } else {
-                    recycler_historic.visibility = View.GONE
-                    text_no_historic.visibility = View.VISIBLE
+                    showPlaceholderText()
                 }
             }
         })
+    }
+
+    private fun showPlaceholderText() {
+        recycler_historic.visibility = View.GONE
+        text_no_historic.visibility = View.VISIBLE
     }
 
     private fun setAdapter(cities: List<City>) {
@@ -42,6 +46,7 @@ class SearchHistoryActivity : BaseActivity(), CitiesAdapter.OnCityClick {
         recycler_historic.adapter = adapter
     }
 
+    //on city click interface method
     override fun onClick(city: City?) {
         city?.let {
             navigator.goToDetail(this, it)

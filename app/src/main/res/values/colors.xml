@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#000000</color>
+    <color name="colorPrimary">#41b7e6</color>
     <color name="colorPrimaryDark">#000000</color>
-    <color name="colorAccent">#000000</color>
+    <color name="colorAccent">#41b7e6</color>
 
     <color name="colorGray">#919191</color>
+    <color name="colorLightGray">#B1B1B1</color>
     <color name="colorTransparentGray">#41919191</color>
+    <color name="colorCenterTemperature">#F4511E</color>
+    <color name="colorCenterBackgroundTemp">#ff5a5d5a</color>
+    <color name="colorEndBackgroundTemp">#ff747674</color>
+    <color name="colorStartBackgroundTemp">#ff9d9e9d</color>
 </resources>

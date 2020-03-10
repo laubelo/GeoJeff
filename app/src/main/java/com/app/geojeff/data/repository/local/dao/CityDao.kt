@@ -10,7 +10,7 @@ interface CityDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(cityDB: CityDB)
 
-    //get search cities history
+    //get search history
     @Transaction
     @Query("Select * from search_city")
     suspend fun getSearchHistory(): List<CityDB>

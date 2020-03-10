@@ -14,7 +14,7 @@ interface ApiService {
         @Query("username") username: String = Constants.USERNAME
     ): ResponseCity
 
-    @GET("http://api.geonames.org/weatherJSON")
+    @GET("weatherJSON")
     suspend fun getCityWeather(
         @Query("north") north: Double?,
         @Query("south") south: Double?,

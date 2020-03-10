@@ -9,4 +9,11 @@
     <string name="GOOGLE_API_KEY">AIzaSyDS5642AaKLYE-EZD5y93fzvhlQnTRCmdY</string>
     <string name="no_temperature_data">No temperature data for this city</string>
     <string name="no_historic_results">No search data. Do a first search.</string>
+    <string name="city_temperature">City temperature</string>
+    <string name="welcome_title">Welcome to Geo Jeff</string>
+    <string name="dialog_button_ok">OK</string>
+    <string name="welcome_content">Search for a city in the search bar, select it from the list and see its information.</string>
+    <string name="placeholder_text">Enjoy your search</string>
+    <string name="population">population</string>
+    <string name="celsius">ºC</string>
 </resources>

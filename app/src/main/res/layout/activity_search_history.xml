@@ -14,7 +14,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:listitem="@layout/item_list_cities" />
 
     <TextView
         android:id="@+id/text_no_historic"
@@ -23,6 +24,7 @@
         android:gravity="center"
         android:padding="10dp"
         android:text="@string/no_historic_results"
+        android:textColor="@color/colorAccent"
         android:textSize="16sp"
         android:textStyle="bold"
         android:visibility="gone"

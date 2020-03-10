@@ -24,7 +24,7 @@ class CitiesAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bindItem(cities[position])
 
-        //hide the separator if the current item is the last position
+        //hide the separator if the current item is in the last position
         hideLastSeparator(holder, position)
     }
 

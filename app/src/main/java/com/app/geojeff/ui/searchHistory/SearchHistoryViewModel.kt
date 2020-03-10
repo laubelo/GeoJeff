@@ -20,5 +20,4 @@ class SearchHistoryViewModel(private val apiRepository: ApiRepository) : BaseVie
         }
     }
 
-
 }
